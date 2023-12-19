@@ -9,6 +9,7 @@
 
 <div class="row justify-content-center">
   <div class="col-sm-8 my-3">
+    
     <%= form_with url: root_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
@@ -24,6 +25,7 @@
             params[:query2],
             class: "form-control",
             placeholder: "Select pet",
+            title: "Select end date",
             type: "date"
         %>
       <%= submit_tag "Search", name: "", class: "btn btn-flat" %>
