@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Aca va el show de cada Offer</h1>
+  <p><%= @offer.description %></p>
+  <p><%= @offer.price %></p>
+  <p><%= @offer.calendar %></p>
+
+  <hr>
+
+  <%= link_to "Back", offers_path %> |
+  <%= link_to "Edit", edit_offer_path(@offer) %> |
+  <%= link_to "Delete Offer", offer_path(@offer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+</div>
