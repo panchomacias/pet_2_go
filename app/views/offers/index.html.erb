@@ -1,2 +1,12 @@
-<% @offers.each do |offer| %>
-<% end %>
+
+<div class="container">
+<h1>Aca van las ofertas</h1>
+  <% @offers.each do |offer| %>
+    <p>Description: <%= offer.description %></p>
+    <p>Price: <%= offer.price %></p>
+    <p><%= link_to "View more", offer_path(offer) %></p>
+  <% end %>
+  <hr>
+  <%= link_to "Back", root_path %> |
+  <%= link_to "New Offer", new_offer_path %>
+</div>
