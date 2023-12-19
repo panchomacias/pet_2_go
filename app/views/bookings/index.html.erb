@@ -1,0 +1,9 @@
+<div class= container>
+<h1>My Bookings</h1>
+ <% @bookings.each do |booking| %>
+<p><strong>Dog sitting Date:</strong> <%= booking.date_from%> - <%= booking.date_to%></p>
+<p><strong>Dog Sitter: </strong><%= booking.user.email %></p>
+<p><%= booking.offer.description %></p>
+<p>$<%= booking.offer.price %></p>
+<% end %>
+</div>
