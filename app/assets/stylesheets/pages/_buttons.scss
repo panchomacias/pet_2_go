@@ -1,0 +1,16 @@
+$green:  #06d6a0;;
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $green;
+  transition: background 0.3s ease;
+}
+.btn-flat:hover {
+  color: $green;
+  padding: 8px 24px;
+  border-radius: px;
+  border: 1px solid $green;
+  transition: background 0.3s ease;
+}
