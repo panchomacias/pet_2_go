@@ -39,7 +39,7 @@ class BookingsController < ApplicationController
       redirect_to bookings_path, notice: 'Booking was successfully destroyed.'
     else
       redirect_tp booking_path, alert: 'Failed to destroy booking.'
-    end 
+    end
   end
 
   private
