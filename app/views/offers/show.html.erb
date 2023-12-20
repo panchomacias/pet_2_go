@@ -4,11 +4,12 @@
   <p>Description: <%= @offer.description %></p>
   <p>Price: <%= @offer.price %></p>
   <p>Available: <%= @offer.date_from.strftime("%B %d, %Y") %> to <%= @offer.date_to.strftime("%B %d, %Y") %></p>
-   <p>Posted: <%= time_ago_in_words(Time.now) %> ago</p>
-  <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
+  <p>Posted: <%= time_ago_in_words(Time.now) %> ago</p>
+  <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill if @offer.photo.attached? %>
 
   <hr>
 
+  <%= link_to "Book now!", new_offer_booking_path(@offer) %> |
   <%= link_to "Back", offers_path %> |
   <%= link_to "Edit", edit_offer_path(@offer) %> |
   <%= link_to "Delete Offer", offer_path(@offer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
