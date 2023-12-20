@@ -4,6 +4,9 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
+    if params[:date_from].present?
+      @offers = Offer.search_sitters(params[:date_from])
+    end
   end
 
   def show
