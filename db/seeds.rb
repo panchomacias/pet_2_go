@@ -8,4 +8,23 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-    
+
+require 'faker'
+10.times do
+  puts "creando usuarios"
+  usuario = User.create!(
+    name: Faker::Name.unique.name,
+    email: Faker::Internet.email,
+    address: Faker::Address.full_address,
+    password: Faker::Internet.password,
+   )
+   puts "creando ofertas"
+   Offer.create!(
+    description: Faker::Quote.famous_last_words,
+    price: rand(10..40),
+    name: usuario.name,
+    date_from: Faker::Date.in_date_period,
+    date_to: Faker::Date.in_date_period,
+    user_id: usuario.id,
+   )
+  end

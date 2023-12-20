@@ -32,7 +32,9 @@ gem "jbuilder"
 gem "cloudinary"
 
 gem "geocoder"
+gem "pg_search"
 
+gem 'faker'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

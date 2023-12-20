@@ -4,9 +4,10 @@
     <p>Name: <%= offer.name %></p>
     <p>Description: <%= offer.description %></p>
     <p>Price: <%= offer.price %></p>
-    <p>Available from <%= offer.date_from.strftime("%B %d, %Y") %> to <%= offer.date_to.strftime("%B %d, %Y") %></p>
+    <p>Available from <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %></p>
     <p>Posted: <%= time_ago_in_words(Time.now) %> ago</p>
-    <%= cl_image_tag offer.photo.key, height: 300, width: 400, crop: :fill if offer.photo.attached? %>
+    <p><%= cl_image_tag offer.photo.key, height: 300, width: 400, crop: :fill if offer.photo.attached? %></p>
+    <%# Modificar Posted por created_at %>
     <p><%= link_to "View more", offer_path(offer) %></p>
     <hr>
   <% end %>
