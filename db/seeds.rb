@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
 require 'faker'
 10.times do
   puts "creando usuarios"
