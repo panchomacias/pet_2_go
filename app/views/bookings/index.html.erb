@@ -5,7 +5,7 @@
       <div class="card mb-3">
         <div class="card-body">
           <p class="card-text"><strong>Dog Sitting Date:</strong> <%= booking.date_from %> - <%= booking.date_to %></p>
-          <p class="card-text"><strong>Dog Sitter:</strong> <%= booking.offer.user.email %></p>
+          <p class="card-text"><strong>Dog Sitter:</strong> <%= booking.offer.user.name %></p>
           <p class="card-text"><%= booking.offer.description %></p>
           <p class="card-text">$<%= booking.offer.price %></p>
         </div>
