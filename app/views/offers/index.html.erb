@@ -5,13 +5,12 @@
     <p>Description: <%= offer.description %></p>
     <p>Price: <%= offer.price %></p>
     <p>Available from <%= offer.date_from.strftime("%B %d, %Y") %> to <%= offer.date_to.strftime("%B %d, %Y") %></p>
-    <%# Modificar Posted por created_at %>
     <p>Posted: <%= time_ago_in_words(Time.now) %> ago</p>
-    <%# Mostrar foto del offer en el index %>
+    <p><%= cl_image_tag offer.photo.key, height: 300, width: 400, crop: :fill %></p>
+    <%# Modificar Posted por created_at %>
     <p><%= link_to "View more", offer_path(offer) %></p>
+    <hr>
   <% end %>
-
-  <hr>
 
   <%= link_to "Back", root_path %> |
   <%= link_to "New Offer", new_offer_path %>
