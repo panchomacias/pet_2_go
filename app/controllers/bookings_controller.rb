@@ -1,15 +1,15 @@
 class BookingsController < ApplicationController
   def index
+    # desde el home cuando estas logged in
     @bookings = Booking.where(user: current_user)
   end
 
   def show
-    @booking = Booking.find(params[:id])
     @bookings = current_user.bookings
   end
 
   def new
-    #desde el show de offers
+    # desde el show de offers
     @bookings = current_user.bookings
     @offer = Offer.find(params[:offer_id])
     @booking = Booking.new
