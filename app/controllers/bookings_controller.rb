@@ -37,12 +37,11 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to offer_bookings_path(@booking.offer_id), status: :see_other, notice: 'Booking was successfully destroyed.'
+    redirect_to offer_bookings_path(@booking.offer_id), status: :see_other, notice: 'Booking was successfully cancelled.'
   end
 
   private
   def booking_params
     params.require(:booking).permit(:date_to, :date_from)
   end
-
 end
