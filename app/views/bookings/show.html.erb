@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>My Bookings</h1>
+  <div class="container">
+    <% @bookings.each do |booking| %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <p class="card-text"><strong>Dog sitting Date:</strong> <%= booking.date_from %> - <%= booking.date_to %></p>
+          <p class="card-text"><strong>Dog Sitter:</strong> <%= booking.offer.user.email %></p>
+          <p class="card-text"><%= booking.offer.description %></p>
+          <p class="card-text">$<%= booking.offer.price %></p>
+          <%# agregar los reviews aquí %>
+        </div>
+      </div>
+    <% end %>
+    <%=link_to 'Back to My Bookings', offer_bookings_path %>
+  </div>
+</div>
