@@ -2,7 +2,7 @@
   <div class="container">
     <h1> Find care for Your Dog, Anytime, Anywhere !</h1>
     <p> Connecting dogs with reliable sitters in a few taps</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+    <%# <a class="btn btn-flat" href="#">Apply now</a> %>
   </div>
 </div>
 
@@ -16,14 +16,19 @@
             class: "form-control",
             placeholder: "Type location"
         %>
-        <%=label_tag :"From:" %>
-        <%= text_field_tag :date_from,
-            params[:date_from],
-            class: "form-control",
-            placeholder: "Select dates",
-            type: "date"
-        %>
-        <%=label_tag :"To:" %>
+        <div class="title p-2">
+          <%= label_tag :"From: " %>
+        </div>
+
+          <%= text_field_tag :date_from,
+              params[:date_from],
+              class: "form-control",
+              placeholder: "Select dates",
+              type: "date"
+          %>
+        <div class="title p-2">
+          <%= label_tag :"To:" %>
+        </div>
         <%= text_field_tag :date_to,
             params[:date_to],
             class: "form-control",
