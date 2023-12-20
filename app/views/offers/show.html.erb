@@ -1,8 +1,11 @@
 <div class="container">
   <h1>Aca va el show de cada Offer</h1>
-  <p><%= @offer.description %></p>
-  <p><%= @offer.price %></p>
-  <p><%= @offer.calendar %></p>
+  <p>Name: <%= @offer.name %></p>
+  <p>Description: <%= @offer.description %></p>
+  <p>Price: <%= @offer.price %></p>
+  <p>Available: <%= @offer.date_from.strftime("%B %d, %Y") %> to <%= @offer.date_to.strftime("%B %d, %Y") %></p>
+   <p>Posted: <%= time_ago_in_words(Time.now) %> ago</p>
+  <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill %>
 
   <hr>
 
