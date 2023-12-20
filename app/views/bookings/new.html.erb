@@ -1,25 +1,36 @@
-
-<h1>Book your Dog Sitter</h1>
-<% if @bookings.present? %>
-  <% @bookings.each do |booking| %>
-    <p><strong>Dog Sitting Date:</strong> <%= booking.date_from%> - <%= booking.date_to%></p>
-    <p><strong>Dog Sitter: </strong><%= booking.user.email %></p>
-    <p><%= booking.offer.description %></p>
-    <p>$<%= booking.offer.price %></p>
-  <% end %>
-<% else %>
-  <p>You have no bookings.</p>
-<% end %>
-
-<h2>Pay Here!</h2>
-
-<%= button_to 'Book Now', offer_bookings_path(@offer.id), data: { method: :post, turbo_confirm: "Are you sure you want to confirm the purchase?"} %>
-
 <div class="container">
-  <%= simple_form_for([@offer, @booking]) do |f| %>
-   <%= f.input :date_from , as: :date%>
-    <%= f.input :date_to, as: :date %>
+  <h1 class="mb-4">Book your Dog Sitter</h1>
 
-    <%= f.submit %>
+  <% if @bookings.present? %>
+    <% @bookings.each do |booking| %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <p class="card-text"><strong>Dog Sitting Date:</strong> <%= booking.date_from %> - <%= booking.date_to %></p>
+          <p class="card-text"><strong>Dog Sitter:</strong> <%= booking.user.email %></p>
+          <p class="card-text"><%= booking.offer.description %></p>
+          <p class="card-text">$<%= booking.offer.price %></p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="lead">You have no bookings.</p>
   <% end %>
+
+  <h2 class="mt-4 mb-3">Pay Here!</h2>
+
+
+  <div class="container mt-4">
+    <%= simple_form_for([@offer, @booking]) do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :date_from, as: :date, label: 'Start Date', class: 'form-control', html5: true %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :date_to, as: :date, label: 'End Date', class: 'form-control', html5: true %>
+        </div>
+      </div>
+
+      <%= f.submit 'Book Now!', class: 'btn btn-primary mt-3 mb-5' %>
+    <% end %>
+  </div>
 </div>

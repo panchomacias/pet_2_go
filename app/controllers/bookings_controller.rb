@@ -1,10 +1,11 @@
 class BookingsController < ApplicationController
-
   def index
     @bookings = Booking.where(user: current_user)
   end
 
   def show
+    @booking = Booking.find(params[:id])
+    @bookings = current_user.bookings
   end
 
   def new
@@ -35,15 +36,11 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
-    if @booking.destroy
-      redirect_to bookings_path, notice: 'Booking was successfully destroyed.'
-    else
-      redirect_tp booking_path, alert: 'Failed to destroy booking.'
-    end
+    @booking.destroy
+    redirect_to offer_bookings_path(@booking.offer_id), status: :see_other, notice: 'Booking was successfully destroyed.'
   end
 
   private
-
   def booking_params
     params.require(:booking).permit(:date_to, :date_from)
   end
