@@ -7,7 +7,6 @@ class OffersController < ApplicationController
   end
 
   def show
-    # @booking = Booking.find
   end
 
   def new
