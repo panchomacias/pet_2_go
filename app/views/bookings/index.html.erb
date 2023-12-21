@@ -9,7 +9,7 @@
           <p class="card-text"><%= booking.offer.description %></p>
           <p class="card-text">$<%= booking.offer.price %></p>
           <%= link_to "Cancel Booking", booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking?"} %>
-
+          <%= link_to "Leave a Review", new_offer_review_path(booking.offer_id)%>
         </div>
       </div>
     <% end %>
