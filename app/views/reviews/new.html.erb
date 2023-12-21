@@ -1,0 +1,8 @@
+<h3> Leave a review </h3>
+<div class="container">
+  <%= simple_form_for @review do |f| %>
+    <%= f.input :rating %>
+    <%= f.input :comment %>
+    <%= f.submit class:"save" %>
+  <% end %>
+</div>
