@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+require 'faker'
 
 require 'faker'
 10.times do
@@ -26,5 +27,6 @@ require 'faker'
     date_from: Faker::Date.in_date_period,
     date_to: Faker::Date.in_date_period,
     user_id: usuario.id,
+    photo: Faker::Avatar.image
    )
   end
