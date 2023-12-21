@@ -1,5 +1,4 @@
-class Offer < ApplicationRecord
-
+class Offer < ApplicationRecor
   belongs_to :user
 
   has_one_attached :photo
@@ -12,5 +11,4 @@ class Offer < ApplicationRecord
   using: {
     tsearch: { prefix: true } # <-- now `superman batm` will return something!
   }
-
 end
