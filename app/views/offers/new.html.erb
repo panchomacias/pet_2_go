@@ -1,6 +1,8 @@
 <div class="container">
-  <h1>Hello <%=current_user.name%> !</h1>
+  <h3 class="display-6">Hello <%= current_user.name %>, Welcome to Pet 2 Go!</h3>
+  <h3>Become a dog sitter today!</h3>
+  <h5>Help us get started by telling us a little bit about yourself.</h5>
   <%= render "form" %>
-  <hr>
-  <%= link_to 'Back', offers_path %>
+  <hr class="my-4">
+  <%= link_to 'Back', offers_path, class: 'btn btn-secondary' %>
 </div>
