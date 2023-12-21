@@ -1,22 +1,5 @@
 <div class="container">
-  <h1 class="mb-4">Book your Dog Sitter</h1>
-
-  <% if @bookings.present? %>
-    <% @bookings.each do |booking| %>
-      <div class="card mb-3">
-        <div class="card-body">
-          <p class="card-text"><strong>Dog Sitting Date:</strong> <%= booking.date_from %> - <%= booking.date_to %></p>
-          <p class="card-text"><strong>Dog Sitter:</strong> <%= booking.offer.user.email %></p>
-          <p class="card-text"><%= booking.offer.description %></p>
-          <p class="card-text">$<%= booking.offer.price %></p>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <p class="lead">You have no bookings.</p>
-  <% end %>
-
-  <h2 class="mt-4 mb-3">Pay Here!</h2>
+  <h1 class="mb-4">Book your Dog Sitter Here!</h1>
 
 
   <div class="container mt-4">
