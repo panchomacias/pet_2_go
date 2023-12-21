@@ -17,12 +17,13 @@ class BookingsController < ApplicationController
 
   def create
     @offer = Offer.find(params[:offer_id])
-    @booking = Booking.new
+    @booking = Booking.new(booking_params)
     @booking.status = true
     @booking.user = current_user
     @booking.offer = @offer
+
     if @booking.save
-      redirect_to offer_bookings_path, notice: 'Booking was successfully created.'
+      redirect_to bookings_path, notice: 'Booking was successfully created.'
     else
       render :new
     end

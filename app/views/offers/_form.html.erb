@@ -1,5 +1,5 @@
 
-  <%= simple_form_for @offer do |f| %>
+  <%= simple_form_for ([@user, @offer]) do |f| %>
     <%= f.input :description %>
     <%= f.input :price %>
     <%= f.input :date_from, html5:true %>
