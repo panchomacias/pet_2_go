@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @bookings = current_user.bookings
+    @booking = current_user.bookings
   end
 
   def new
@@ -37,7 +37,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to offer_bookings_path(@booking.offer_id), status: :see_other, notice: 'Booking was successfully cancelled.'
+    redirect_to offer_bookings_path(@booking.offer_id), status: :see_other, notice: 'Booking was cancelled.'
   end
 
   private

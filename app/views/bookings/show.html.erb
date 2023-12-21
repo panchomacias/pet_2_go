@@ -4,8 +4,8 @@
     <% @bookings.each do |booking| %>
       <div class="card mb-3">
         <div class="card-body">
-          <p class="card-text"><strong>Dog Sitting Date:</strong> <%= booking.date_from.strftime('%B %e, %Y') if booking.date_from? %> - <%= booking.date_to.strftime('%B %e, %Y') if booking.date_to? %> </p>
-          <p class="card-text"><strong>Dog Sitter:</strong> <%= booking.offer.user.email %></p>
+          <p class="card-text"><strong>Dog Sitting Date:</strong> <%= @booking.date_from.strftime('%B %e, %Y') if @booking.date_from? %> - <%= @booking.date_to.strftime('%B %e, %Y') if @booking.date_to? %> </p>
+          <p class="card-text"><strong>Dog Sitter:</strong> <%= booking.offer.name %></p>
           <p class="card-text"><%= booking.offer.description %></p>
           <p class="card-text">$<%= booking.offer.price %></p>
         </div>
