@@ -10,9 +10,25 @@
             <h5 class="card-title "><%= offer.name %></h5>
             <p class="card-text " ><%= offer.description %>.</p>
             <p class="card-text " ><small class="text-body-secondary"> Posted: <%= time_ago_in_words(Time.now) %> ago</small></p>
-            <p class="card-price" > $<%= offer.price%></p>
+            <div class= "card-price-rating d-flex">
+              <p class="card-price" > $<%= offer.price%>/per night </p>
+              <p>|</p>
+              <p class="card-text">  From <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %>
+              </p>
+            </div>
+            <div class="rating">
+            <% if @reviews.present? %>
+                <% total_ratings = @reviews.sum(:rating) %>
+                <% average_rating = total_ratings / @reviews.count.to_f %>
+                <%= "Average Rating: #{average_rating}" %>
+              <% else %>
+                <%= "No Ratings Yet" %>
+              <% end %>
+            </div>
+
             <%= link_to "Back", root_path %> |
             <%= link_to "View more", offer_path(offer) %>
+
           </div>
         </div>
       </div>
