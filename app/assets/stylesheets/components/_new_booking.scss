@@ -1,0 +1,39 @@
+
+.booking-container {
+  max-width: 100%;
+  padding: 0 109px;
+
+  h1 {
+    color: #6c757d;
+    text-decoration: underline;
+    text-decoration-color: #06d6a0;
+  }
+
+  .offer-details p {
+    color: #6c757d;
+  }
+
+  .booking-form {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-control {
+    border-radius: 0;
+  }
+
+  .btn-primary {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 4px;
+    background: #06d6a0;
+    transition: background 0.3s ease;
+
+    &:hover {
+      color: #06d6a0;
+      padding: 8px 24px;
+      border-radius: px;
+      border: 1px solid #06d6a0;
+      transition: background 0.3s ease;
+    }
+  }
+}
