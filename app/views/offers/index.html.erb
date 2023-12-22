@@ -11,9 +11,10 @@
             <p class="card-text " ><%= offer.description %>.</p>
             <p class="card-text " ><small class="text-body-secondary"> Posted: <%= time_ago_in_words(Time.now) %> ago</small></p>
             <div class= "card-price-rating d-flex">
-              <p class="card-price" > $<%= offer.price%>0/per night </p>
-              <p>   |  </p>
-              <p class="card-text">  From <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %>
+
+              <p class="card-price">$<%= offer.price %>/per night </p>
+<p>&nbsp;|&nbsp;</p>
+<p class="card-text">From <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %></p>
               </p>
             </div>
             <div class="rating">
