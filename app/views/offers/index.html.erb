@@ -1,40 +1,36 @@
-<div class="container m-5px">
-  <% @offers.each do |offer| %>
-    <div class="offers-card card mb-3" style="max-width: 900px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <p style="margin-bottom: 0;"><%= cl_image_tag offer.photo.key, height: 180, width: 286, crop: :fill if offer.photo.attached? %></p>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title "><%= offer.name %></h5>
-            <p class="card-text " ><%= offer.description %>.</p>
-            <p class="card-text " ><small class="text-body-secondary"> Posted: <%= time_ago_in_words(Time.now) %> ago</small></p>
-            <div class= "card-price-rating d-flex">
+<div class="container-background" style="background-color:white;">
+  <div class="container m-5px" style="background-color: white;">
+    <% @offers.each do |offer| %>
+      <div class="offers-card card-details card mb-3 clickable-card" style="max-width: 900px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <p class="image-offer" style="margin-bottom: 0;"><%= cl_image_tag offer.photo.key, height: 200, width: 286, crop: :fill if offer.photo.attached? %></p>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title "><%= offer.name %></h5>
+              <p class="card-text " ><%= offer.description %>.</p>
+              <p class="card-text " ><small class="text-body-secondary"> Posted: <%= time_ago_in_words(Time.now) %> ago</small></p>
+              <div class= "card-price-rating d-flex">
+                <p class="card-price">$<%= offer.price %>/per night </p>
+                <p>&nbsp;|&nbsp;</p>
+                <p class="card-text">From <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %></p>
+              </div>
+              <div class="rating" style="m-3px;">
+                <% if @reviews.present? %>
+                    <% total_ratings = @reviews.sum(:rating) %>
+                    <% average_rating = total_ratings / @reviews.count.to_f %>
+                    <%= "Average Rating: #{average_rating}" %>
+                    <% else %>
+                      <%= "No Ratings Yet" %>
+                  <% end %>
+              </div>
+              <%= link_to "View more", offer_path(offer), class: "custom-button-style" %>
 
-              <p class="card-price">$<%= offer.price %>/per night </p>
-<p>&nbsp;|&nbsp;</p>
-<p class="card-text">From <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %></p>
-              </p>
             </div>
-            <div class="rating">
-            <% if @reviews.present? %>
-                <% total_ratings = @reviews.sum(:rating) %>
-                <% average_rating = total_ratings / @reviews.count.to_f %>
-                <%= "Average Rating: #{average_rating}" %>
-              <% else %>
-                <%= "No Ratings Yet" %>
-              <% end %>
-            </div>
-
-            <%# link_to "Back", root_path %>
-            <%= link_to "View more", offer_path(offer) %>
-
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
-
-<%= render 'shared/footer' %>
