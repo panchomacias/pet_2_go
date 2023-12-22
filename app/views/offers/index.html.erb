@@ -15,6 +15,7 @@
                 <p class="card-price">$<%= offer.price %>0/per night </p>
                 <p>&nbsp;|&nbsp;</p>
                 <p class="card-text">From <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %></p>
+                
               </div>
               <div class="rating" style="m-3px;">
                 <% if @reviews.present? %>
@@ -25,7 +26,7 @@
                       <%= "No Ratings Yet" %>
                   <% end %>
               </div>
-              <%= link_to "View more", offer_path(offer), class: "custom-button-style" %>
+              <p><%= link_to "View more", offer_path(offer), class: "custom-button-style" %></p>
             </div>
           </div>
         </div>
