@@ -1,10 +1,10 @@
 <div class="container">
-  <h1>Aca va el show de cada Offer</h1>
-  <p>Name: <%= @offer.name %></p>
-  <p>Description: <%= @offer.description %></p>
-  <p>Price: <%= @offer.price %></p>
-  <p>Available: <%= @offer.date_from.strftime("%B %d, %Y") if @offer.date_from? %> to <%= @offer.date_to.strftime("%B %d, %Y") if @offer.date_to%></p>
-  <p>Posted: <%= time_ago_in_words(Time.now) %> ago</p>
+  <h1>Dog Sitter's details</h1>
+  <p><strong>Name: </strong><%= @offer.name %></p>
+  <p><strong> Description: </strong><%= @offer.description %></p>
+  <p><strong> Price: </strong>$<%= @offer.price %>0</p>
+  <p><strong>Available:</strong> <%= @offer.date_from.strftime("%B %d, %Y") if @offer.date_from? %> to <%= @offer.date_to.strftime("%B %d, %Y") if @offer.date_to%></p>
+  <p><strong>Posted: </strong><%= time_ago_in_words(Time.now) %> ago</p>
   <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill if @offer.photo.attached? %>
 
   <hr>
@@ -15,9 +15,10 @@
   <% end %>
   <hr>
 
-  <%= link_to "Book now!", new_offer_booking_path(@offer) %> |
+  <p><%= link_to "Book now!", new_offer_booking_path(@offer), class: 'btn btn-primary' %></p>
   <%= link_to "Back", offers_path %> |
   <%= link_to "Edit", edit_offer_path(@offer) %> |
   <%= link_to "Delete Offer", offer_path(@offer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 </div>
 
+<%= render 'shared/footer' %>
