@@ -41,14 +41,16 @@
       line-height: 1.6;
     }
 
-    .btn-primary {
-      background-color: #007bff;
-      border-color: #007bff;
+    .btn-flat {
+      background-color: #06d6a0;
+      // border-color: #007bff;
       color: #fff;
+      text-decoration: none;
 
       &:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
+        background-color: #F4F4F4;
+        border-color: #06d6a0;
+        color: #06d6a0;
       }
     }
   }
