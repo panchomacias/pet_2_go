@@ -1,10 +1,12 @@
-<div class="container">
-  <h1 class="mb-4">Book your Dog Sitter Here!</h1>
-  <p><strong>Name: </strong><%= @offer.name %></p>
-  <p><strong> Description: </strong><%= @offer.description %></p>
-  <p><strong> Price: </strong>$<%= @offer.price %>0</p>
-  <p><strong>Available:</strong> <%= @offer.date_from.strftime("%B %d, %Y") if @offer.date_from? %> to <%= @offer.date_to.strftime("%B %d, %Y") if @offer.date_to%></p>
-  <div class="container mt-4">
+<div class="container booking-container py-5">
+  <h1 class="mb-4 text-center">Book your Dog Sitter Here!</h1>
+  <div class="offer-details mb-5">
+    <p><strong>Name: </strong><%= @offer.name %></p>
+    <p><strong> Description: </strong><%= @offer.description %></p>
+    <p><strong> Price: </strong>$<%= @offer.price %>0</p>
+    <p><strong>Available:</strong> <%= @offer.date_from.strftime("%B %d, %Y") if @offer.date_from? %> to <%= @offer.date_to.strftime("%B %d, %Y") if @offer.date_to%></p>
+  </div>
+  <div class="booking-form container mt-4 p-4 bg-light rounded">
     <%= simple_form_for([@offer, @booking]) do |f| %>
       <div class="row">
         <div class="col-md-6">
@@ -15,7 +17,7 @@
         </div>
       </div>
 
-      <%= f.submit 'Book Now!', class: 'btn btn-primary mt-3 mb-5' %>
+      <%= f.submit 'Book Now!', class: 'btn btn-flat mt-3 mb-5' %>
     <% end %>
   </div>
 </div>

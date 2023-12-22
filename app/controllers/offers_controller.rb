@@ -6,11 +6,12 @@ class OffersController < ApplicationController
     @offers = Offer.all
     if params[:date_from].present?
       @offers = Offer.search_sitters(params[:date_from])
+     # @reviews = Review.where(offer_id: params[:id].to_i)
     end
   end
 
   def show
-    @reviews = Review.where(offer_id: params[:id]) # traigo las reviews que coinciden con el offer_id
+    @reviews = Review.where(offer_id: params[:id].to_i) # traigo las reviews que coinciden con el offer_id
   end
 
   def new
