@@ -1,11 +1,22 @@
-<div class="container">
-  <h1>Dog Sitter's details</h1>
-  <p><strong>Name: </strong><%= @offer.name %></p>
-  <p><strong> Description: </strong><%= @offer.description %></p>
-  <p><strong> Price: </strong>$<%= @offer.price %>0</p>
-  <p><strong>Available:</strong> <%= @offer.date_from.strftime("%B %d, %Y") if @offer.date_from? %> to <%= @offer.date_to.strftime("%B %d, %Y") if @offer.date_to%></p>
-  <p><strong>Posted: </strong><%= time_ago_in_words(Time.now) %> ago</p>
-  <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill if @offer.photo.attached? %>
+<div class="container px-5" style="background-color: white; max-width:100%">
+<h1 style="margin-top 3px">Dog Sitter's details</h1>
+<div class="card-big m-5px" style="background-color: white;">
+  <div class="show-card d-flex back">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill if @offer.photo.attached? %>
+      </div>
+      <div class="col-md-8">
+        <div class="body-card" style="margin-left: 50px;">
+          <h5 class="card-title"> <strong><%= @offer.name %></strong></h5>
+          <p class="card-text "> <strong> Description: </strong><%= @offer.description %></p>
+          <p class="card-text "> <strong> Price: </strong>$<%= @offer.price %>0</p>
+          <p><strong>Available:</strong> <%= @offer.date_from.strftime("%B %d, %Y") if @offer.date_from? %> to <%= @offer.date_to.strftime("%B %d, %Y") if @offer.date_to%></p>
+          <p><small class="text-body-secondary"> Posted <%= time_ago_in_words(Time.now)%> ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <hr>
   <% @reviews.each do |review| %>
@@ -19,6 +30,7 @@
   <%= link_to "Back", offers_path %> |
   <%= link_to "Edit", edit_offer_path(@offer) %> |
   <%= link_to "Delete Offer", offer_path(@offer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+</div>
 </div>
 
 <%= render 'shared/footer' %>

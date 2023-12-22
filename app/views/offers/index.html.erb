@@ -17,10 +17,10 @@
                 <p class="card-text">From <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %></p>
               </div>
               <div class="rating" style="m-3px;">
-                <% if @reviews.present? %>
-                    <% total_ratings = @reviews.sum(:rating) %>
-                    <% average_rating = total_ratings / @reviews.count.to_f %>
-                    <%= "Average Rating: #{average_rating}" %>
+              <% total_ratings = offer.reviews.sum(:rating) %>
+                <% if total_ratings.present? %>
+                    <% average_rating = total_ratings / offer.reviews.size.to_f %>
+                    <%= "Average Rating: #{average_rating}" %><i class="fa-solid fa-paw"></i>
                     <% else %>
                       <%= "No Ratings Yet" %>
                   <% end %>
