@@ -6,9 +6,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @offer = Offer.find(params[:offer_id])
     @review = Review.new(review_params)
+    @review.user = current_user
+    @review.offer_id = @offer.id
     if @review.save
-      redirect_to offer_bookings_path
+      redirect_to offer_path(@offer)
     else
     render :new; status :unprocessable_entity
     end
@@ -22,7 +25,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params # tiene que llamarse como el modelo_params
-	  params.require(:reviews).permit(:rating, :comment)
+	  params.require(:review).permit(:rating, :comment)
   end
 
 end

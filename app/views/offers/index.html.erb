@@ -1,17 +1,37 @@
-<div class="container">
-  <h2>Dog Sitters Available</h2>
+<div class="container m-5px">
   <% @offers.each do |offer| %>
-    <p>Name: <%= offer.name %></p>
-    <p>Description: <%= offer.description %></p>
-    <p>Price: <%= offer.price %></p>
-    <p>Available from <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %></p>
-    <p>Posted: <%= time_ago_in_words(Time.now) %> ago</p>
-    <p><%= cl_image_tag offer.photo.key, height: 300, width: 400, crop: :fill if offer.photo.attached? %></p>
-    <%# Modificar Posted por created_at %>
-    <p><%= link_to "View more", offer_path(offer) %></p>
-    <hr>
-  <% end %>
+    <div class="offers-card card mb-3" style="max-width: 900px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <p style="margin-bottom: 0;"><%= cl_image_tag offer.photo.key, height: 180, width: 286, crop: :fill if offer.photo.attached? %></p>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title "><%= offer.name %></h5>
+            <p class="card-text " ><%= offer.description %>.</p>
+            <p class="card-text " ><small class="text-body-secondary"> Posted: <%= time_ago_in_words(Time.now) %> ago</small></p>
+            <div class= "card-price-rating d-flex">
+              <p class="card-price" > $<%= offer.price%>/per night </p>
+              <p>|</p>
+              <p class="card-text">  From <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %>
+              </p>
+            </div>
+            <div class="rating">
+            <% if @reviews.present? %>
+                <% total_ratings = @reviews.sum(:rating) %>
+                <% average_rating = total_ratings / @reviews.count.to_f %>
+                <%= "Average Rating: #{average_rating}" %>
+              <% else %>
+                <%= "No Ratings Yet" %>
+              <% end %>
+            </div>
 
-  <%= link_to "Back", root_path %> |
-  <%= link_to "New Offer", new_offer_path %>
+            <%= link_to "Back", root_path %> |
+            <%= link_to "View more", offer_path(offer) %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

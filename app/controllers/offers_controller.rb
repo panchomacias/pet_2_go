@@ -10,6 +10,7 @@ class OffersController < ApplicationController
   end
 
   def show
+    @reviews = Review.where(offer_id: params[:id]) # traigo las reviews que coinciden con el offer_id
   end
 
   def new
