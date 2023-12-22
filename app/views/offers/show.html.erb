@@ -1,36 +1,39 @@
-<div class="container px-5" style="background-color: white; max-width:100%">
-<h1 style="margin-top 3px">Dog Sitter's details</h1>
-<div class="card-big m-5px" style="background-color: white;">
-  <div class="show-card d-flex back">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill if @offer.photo.attached? %>
-      </div>
-      <div class="col-md-8">
-        <div class="body-card" style="margin-left: 50px;">
-          <h5 class="card-title"> <strong><%= @offer.name %></strong></h5>
-          <p class="card-text "> <strong> Description: </strong><%= @offer.description %></p>
-          <p class="card-text "> <strong> Price: </strong>$<%= @offer.price %>0</p>
-          <p><strong>Available:</strong> <%= @offer.date_from.strftime("%B %d, %Y") if @offer.date_from? %> to <%= @offer.date_to.strftime("%B %d, %Y") if @offer.date_to%></p>
-          <p><small class="text-body-secondary"> Posted <%= time_ago_in_words(Time.now)%> ago</small></p>
+
+<div class="container-background" style="background-color:white;">
+  <div class="container m-5px" style="background-color: white;">
+    <div class="card-details card-show mb-3" >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <%= cl_image_tag @offer.photo.key, height: 300, width: 400, crop: :fill if @offer.photo.attached? %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2> Meet <%= @offer.name %>:</h2>
+            <p><%= @offer.description %>.</p>
+            <p><small class="text-body-secondary"> Posted: <%= time_ago_in_words(Time.now) %> ago</small></p>
+            <div class= "card-price-rating d-flex">
+              <p class="card-price">$<%= @offer.price %>/per night </p>
+              <p>&nbsp;|&nbsp;</p>
+              <p>From <%= @offer.date_from.strftime("%B %d, %Y") if @offer.date_from? %> to <%= @offer.date_to.strftime("%B %d, %Y") if @offer.date_to? %></p>
+            </div>
+            <div class="rating-card" style="m-3px;">
+              <h5>Reviews and testimonials </h5>
+              <% total_ratings = @offer.reviews.sum(:rating) %>
+              <% if total_ratings.present? %>
+                <% @offer.reviews.each do |review| %>
+                  <p><%= review.user.username %></p>
+                  <p><%= review.rating %> <i class="fa-solid fa-paw"></i></p>
+                  <p><%= review.comment %></p>
+                <% end %>
+              <% else %>
+                <%= "No Ratings Yet" %>
+              <% end %>
+            </div>
+          </div>
+            <%= link_to "Book now!", new_offer_booking_path(@offer), class:"btn-flat" %>
+            <%= link_to "Back", offers_path %> 
         </div>
       </div>
     </div>
   </div>
-
-  <hr>
-  <% @reviews.each do |review| %>
-    <p><%= review.rating  %></p>
-    <p><%= review.comment  %></p>
-    <p><%= review.user.username  %></p>
-  <% end %>
-  <hr>
-
-  <p><%= link_to "Book now!", new_offer_booking_path(@offer), class: 'btn btn-primary' %></p>
-  <%= link_to "Back", offers_path %> |
-  <%= link_to "Edit", edit_offer_path(@offer) %> |
-  <%= link_to "Delete Offer", offer_path(@offer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 </div>
-</div>
-
-<%= render 'shared/footer' %>
