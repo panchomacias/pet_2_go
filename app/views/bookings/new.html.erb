@@ -1,7 +1,9 @@
 <div class="container">
   <h1 class="mb-4">Book your Dog Sitter Here!</h1>
-
-
+  <p><strong>Name: </strong><%= @offer.name %></p>
+  <p><strong> Description: </strong><%= @offer.description %></p>
+  <p><strong> Price: </strong>$<%= @offer.price %>0</p>
+  <p><strong>Available:</strong> <%= @offer.date_from.strftime("%B %d, %Y") if @offer.date_from? %> to <%= @offer.date_to.strftime("%B %d, %Y") if @offer.date_to%></p>
   <div class="container mt-4">
     <%= simple_form_for([@offer, @booking]) do |f| %>
       <div class="row">
@@ -17,3 +19,5 @@
     <% end %>
   </div>
 </div>
+
+<%= render 'shared/footer' %>
