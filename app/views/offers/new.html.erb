@@ -1,15 +1,14 @@
-<div class="bg-white d-flex align-items-center justify-content-center vh-100">
-  <div class="container">
-    <h3 class="display-6">Hello <%= current_user.name %>, Welcome to Pet 2 Go!</h3>
-    <h3>Become a dog sitter today!</h3>
-    <h5>Help us get started by telling us a little bit about yourself.</h5>
+<div class= "bg-white py-5">
+ <div class="bg-white d-flex align-items-center justify-content-center vh-100 offers-card-container">
+   <div class="offers-card">
+     <h3 class="display-6">Hello <%= current_user.name %>, Welcome to Pet 2 Go!</h3>
+     <h3>Become a dog sitter today!</h3>
+     <h5>Help us get started by telling us a little bit about yourself.</h5>
 
-    <%= render "form" %>
+     <%= render "form" %>
 
-    <%# link_to 'Back', offers_path, class: 'btn btn-flat' %>
-    <hr class="my-4">
-  </div>
+     <%# link_to 'Back', offers_path, class: 'btn btn-flat' %>
+   </div>
+ </div>
 </div>
-
 <%= render 'shared/footer' %>
-
