@@ -32,7 +32,6 @@
  overflow: visible;
 }
 
-
  .card-details {
   color: black;
   height: 100%;
@@ -66,3 +65,12 @@
   transform: translate(-50%, 50%);
   opacity: 1;
  }
+
+ .custom-button-style {
+  background-color: #08D6A0;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 60px;
+}
