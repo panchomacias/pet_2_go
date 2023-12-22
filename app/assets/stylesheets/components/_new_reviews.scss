@@ -1,10 +1,10 @@
-.new-offers-card-container {
+.new-reviews-card-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.new-offers-card {
+.new-reviews-card {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   background: #f5f5f5;
@@ -13,17 +13,17 @@
   border: 2px solid #c3c6ce;
   transition: 0.5s ease-out;
   overflow: visible;
-  height: 100vh; /* Optional: Set the height to full viewport height */
-  margin: 10px 0 10px; /* Adjust the margin values as needed */
+  height: 50vh; /* Optional: Set the height to full viewport height */
+  margin: -170px 0 20px; /* Adjust the margin values as needed */
 }
 
 /*Hover*/
-.new-card-input:hover {
+.new-reviews-input:hover {
   border-color: #08D6A0;
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
  }
 
- .new-card-input {
+ .new-reviews-input {
  border-radius: 20px;
  background: #f5f5f5;
  position: relative;
