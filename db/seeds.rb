@@ -81,3 +81,14 @@ offer3.photo.attach(io: file3, filename: 'paseador3.png', content_type: 'image/p
 offer3.save
 
 puts "Sitters created successfully"
+
+puts "Creating Bookings"
+
+booking = Booking.create(
+  status: true,
+  user_id: sofia_alfaro.id,
+  date_from: Date.today,
+  date_to: Date.today + 2,
+  offer_id: offer2.id
+)
+puts "Bookings created"
