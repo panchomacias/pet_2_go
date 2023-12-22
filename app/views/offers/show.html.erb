@@ -11,28 +11,29 @@
             <h2> Meet <%= @offer.name %>:</h2>
             <p><%= @offer.description %>.</p>
             <p><small class="text-body-secondary"> Posted: <%= time_ago_in_words(Time.now) %> ago</small></p>
-            <div class= "card-price-rating d-flex">
+            <div class= "card-price-rating">
               <p class="card-price">$<%= @offer.price %>/per night </p>
-              <p>&nbsp;|&nbsp;</p>
+
               <p>From <%= @offer.date_from.strftime("%B %d, %Y") if @offer.date_from? %> to <%= @offer.date_to.strftime("%B %d, %Y") if @offer.date_to? %></p>
             </div>
-            <div class="rating-card" style="m-3px;">
-              <h5>Reviews and testimonials </h5>
-              <% total_ratings = @offer.reviews.sum(:rating) %>
-              <% if total_ratings.present? %>
-                <% @offer.reviews.each do |review| %>
-                  <p><%= review.user.username %></p>
-                  <p><%= review.rating %> <i class="fa-solid fa-paw"></i></p>
-                  <p><%= review.comment %></p>
-                <% end %>
-              <% else %>
-                <%= "No Ratings Yet" %>
-              <% end %>
-            </div>
+
           </div>
             <%= link_to "Book now!", new_offer_booking_path(@offer), class:"btn-flat" %>
-            <%= link_to "Back", offers_path %> 
+            <%= link_to "Back", offers_path %>
         </div>
+      </div>
+      <div class="rating-card" style="padding: 10px;">
+        <h5>Reviews and testimonials </h5>
+          <% total_ratings = @offer.reviews.sum(:rating) %>
+            <% if total_ratings.present? %>
+              <% @offer.reviews.each do |review| %>
+                <p><strong><%= review.user.username %></strong></p>
+                <p>Rating: <%= review.rating %> <i class="fa-solid fa-paw"></i></p>
+                <p>Comments: <%= review.comment %></p>
+              <% end %>
+            <% else %>
+              <%= "No Ratings Yet" %>
+            <% end %>
       </div>
     </div>
   </div>
