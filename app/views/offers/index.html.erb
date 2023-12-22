@@ -12,7 +12,7 @@
             <p class="card-text " ><small class="text-body-secondary"> Posted: <%= time_ago_in_words(Time.now) %> ago</small></p>
             <div class= "card-price-rating d-flex">
               <p class="card-price" > $<%= offer.price%>/per night </p>
-              <p>|</p>
+              <p>   |  </p>
               <p class="card-text">  From <%= offer.date_from.strftime("%B %d, %Y") if offer.date_from? %> to <%= offer.date_to.strftime("%B %d, %Y") if offer.date_to? %>
               </p>
             </div>
@@ -26,7 +26,7 @@
               <% end %>
             </div>
 
-            <%= link_to "Back", root_path %> |
+            <%= link_to "Back", root_path %>  |
             <%= link_to "View more", offer_path(offer) %>
 
           </div>
