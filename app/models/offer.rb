@@ -1,8 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :user
-
   has_one_attached :photo
-
+  has_many :reviews
   #validates :description, lenght: { minimum: 20 }
   validates :price, presence: true
   include PgSearch::Model # incluya todo el codigo de la gema pgsearch
